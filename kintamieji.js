@@ -87,3 +87,41 @@ if (a4 == 0) {
 console.log(`Nulių yra ${zeros}
 Vienetų yra: ${ones}
 Dvejetų yra: ${twos}`);
+
+// 5.
+
+const hTag = rand(1, 6);
+console.log(hTag);
+document.write(`<h${hTag}>${hTag}</h${hTag}>`);
+
+// 6.
+
+// 8.
+
+const one8 = rand(0, 100);
+const two8 = rand(0, 100);
+const three8 = rand(0, 100);
+
+console.log(one8, two8, three8);
+
+console.log(`Vidurkis: ${((one8 + two8 + three8) / 3).toFixed(2)}`);
+
+let sum = 0;
+let quantity = 0;
+
+if (one8 > 10 && one8 < 90) {
+  sum += one8;
+  quantity++;
+}
+if (two8 > 10 && two8 < 90) {
+  sum += two8;
+  quantity++;
+}
+if (three8 > 10 && three8 < 90) {
+  sum += three8;
+  quantity++;
+}
+
+console.log(
+  `Mediana: ${sum === 0 ? "Vidurkio nėra" : (sum / quantity).toFixed(2)}`
+);
