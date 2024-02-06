@@ -232,6 +232,7 @@ document.write(
 //10
 document.write('<p>---------10----------</p>')
 let arr10 = [rand(0, 300)]
+
 for (let i = 1; i < 101; i++) {
   let number
   do {
@@ -241,19 +242,18 @@ for (let i = 1; i < 101; i++) {
 }
 
 arr10.sort((a, b) => a - b)
-console.log(arr10)
+// console.log(arr10)
 
-let arr10Left = []
+let arr10Left,
+  arr10Right = []
 let arr10Max = [arr10[arr10.length - 1]]
-let arr10Right = []
 
 function pyramidSort () {
   arr10Left = []
   arr10Right = []
-  for (let i = arr10.length - 2; i >= 0; i--) {
+  for (let i = arr10.length - 2; i >= 0; i -= 2) {
     let val1 = arr10[i]
     let val2 = arr10[i - 1]
-    i--
 
     if (rand(0, 1) === 0) {
       arr10Left.unshift(val1)
@@ -269,10 +269,29 @@ function pyramidSort () {
     )}`
   )
 }
-pyramidSort()
+function pyramidSortRand () {
+  arr10Left = []
+  arr10Right = []
+  for (let i = arr10.length - 2; i >= 0; i--) {
+    let val = arr10[i]
 
+    if (rand(0, 1) === 0 && arr10Left.length < Math.floor(arr10.length / 2)) {
+      arr10Left.unshift(val)
+    } else {
+      arr10Right.push(val)
+    }
+  }
+  console.log(
+    `Sorted 1 time, skirtumas ${Math.abs(
+      arraySum(arr10Left) - arraySum(arr10Right)
+    )}`
+  )
+}
+// pyramidSort()
+pyramidSortRand()
 while (Math.abs(arraySum(arr10Left) - arraySum(arr10Right)) > 30) {
-  pyramidSort()
+  // pyramidSort()
+  pyramidSortRand()
 }
 
 console.log(`Sumos: ${arraySum(arr10Left)} ir ${arraySum(arr10Right)}`)
