@@ -295,7 +295,7 @@ while (Math.abs(arraySum(arr10Left) - arraySum(arr10Right)) > 30) {
 }
 
 console.log(`Sumos: ${arraySum(arr10Left)} ir ${arraySum(arr10Right)}`)
-console.log([...arr10Left, ...arr10Max, ...arr10Right])
+console.log([...arr10Left, arr10Max, ...arr10Right])
 
 function arraySum (array) {
   let sum = 0
