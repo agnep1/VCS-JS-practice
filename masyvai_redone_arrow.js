@@ -3,7 +3,7 @@ function rand (min, max) {
   max = Math.floor(max)
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
-document.write(`<p>Masyvai</p>`)
+document.write(`<p>Masyvai su callback funkcijom</p>`)
 document.write(`<p>---------1----------</p>`)
 
 const array1 = []
@@ -15,10 +15,10 @@ document.write(array1)
 
 document.write(`<p>---------2----------</p>`)
 //a
-let bigger = 0
-for (let i = 0; i < array1.length; i++) if (array1[i] > 10) bigger++
-
-document.write('Bigger than 10 are ' + bigger + ' numbers')
+// let bigger = 0
+// for (let i = 0; i < array1.length; i++) if (array1[i] > 10) bigger++
+let bigger = array1.filter(el => el > 10)
+document.write(`Bigger than 10 are ${bigger.length} numbers`)
 //b
 let max1 = ''
 let maxIndex1 = []
@@ -30,7 +30,6 @@ for (let i = 1; i < array1.length; i++) {
     maxIndex1.push(i)
   }
 }
-
 document.write(`<p>Didžiausia reikšmė: ${max1}</p>`)
 document.write('Jos indeksas (-ai): ', maxIndex1)
 
