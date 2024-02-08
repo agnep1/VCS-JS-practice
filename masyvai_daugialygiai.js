@@ -86,8 +86,12 @@ for (let p = 0; p < 10; p++) {
 console.log(ar3)
 //4
 
-ar3.sort((a, b) => a.length - b.length).sort(a => (a.includes('K') ? -1 : 0))
-
+// ar3.sort((a, b) => a.length - b.length).sort(a => (a.includes('K') ? -1 : 0))
+ar3.sort((a, b) => {
+  if (a.includes('K') && !b.includes('K')) return -1
+  if (!a.includes('K') && b.includes('K')) return 1
+  return a.length - b.length
+})
 // sortedArray
 //   .sort((a, b) => a.length - b.length)
 //   .sort(a => (a.includes(letter) ? -1 : 1))
