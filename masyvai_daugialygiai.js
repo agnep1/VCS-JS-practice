@@ -54,13 +54,32 @@ for (let p = 0; p < ar1.length; p++) {
 }
 console.log(sumos)
 
+ar1.forEach(arr => {
+  arr.forEach((el, index) => {
+    sumos[index] += el
+  })
+})
+
+console.log(sumos)
+
 //d
 for (let p = 0; p < ar1.length; p++) {
   for (let a = ar1[p].length; a < 7; a++) {
     ar1[p].push(rand(5, 25))
   }
 }
-
+//Justo
+// const extendSecondLevels = arrayWithChildArrays => {
+//   for (let i = 0; i < arrayWithChildArrays.length; i++) {
+//     arrayWithChildArrays[i] = [
+//       ...arrayWithChildArrays[i],
+//       rand(5, 25),
+//       rand(5, 25)
+//     ]
+//   }
+//   return arrayWithChildArrays
+// }
+// console.log(extendSecondLevels(generate2dArray()))
 //e
 const ar2 = []
 for (let p = 0; p < ar1.length; p++) {
@@ -92,9 +111,48 @@ ar3.sort((a, b) => {
   if (!a.includes('K') && b.includes('K')) return 1
   return a.length - b.length
 })
+
+// sortedArray
+// .sort((a, b) => a.length - b.length)
+// .sort((a, b) => (a.includes(letter) ? -1 : 1) - (b.includes(letter) ? -1 : 1))
+
 // sortedArray
 //   .sort((a, b) => a.length - b.length)
 //   .sort(a => (a.includes(letter) ? -1 : 1))
 // ar3.sort((a, b) => (a.includes('K') ? -1 : 1))
 
 console.log(ar3)
+//5
+const ar5 = []
+for (let i = 0; i < 10; i++) {
+  const length = rand(0, 5)
+  if (length === 0) {
+    ar5.push(rand(0, 10))
+  } else {
+    let inArr = []
+    for (let j = 0; j < length; j++) {
+      inArr.push(rand(0, 10))
+    }
+    ar5.push(inArr)
+  }
+}
+console.log(ar5)
+
+//6
+let ar5Sum = ar5.flat().reduce((sum, el) => (sum += el), 0)
+console.log(ar5Sum)
+
+ar5.sort(
+  (a, b) =>
+    (Array.isArray(a) ? a.reduce((sum, el) => (sum += el), 0) : a) -
+    (typeof b !== 'number' ? b.reduce((sum, el) => (sum += el), 0) : b)
+)
+
+//Codas
+// let string =
+//   '33!115!109!101!105!115!105!118!32!111!105!108!97!103!116!105!97!118!97!115!32!115!117!97!382!97!114!71!'
+// let aString = string.split('!')
+// let bString = aString.map(el => String.fromCharCode(el)).slice(0, -1)
+// let cString = bString.reverse()
+// let rezult = cString.join('')
+// console.log(rezult)
